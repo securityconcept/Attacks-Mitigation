@@ -1,0 +1,28 @@
+Pass the Hash" (PtH) is a cyberattack technique that involves the use of stolen hashed credentials to authenticate and gain unauthorized access to a computer or network. In traditional authentication systems, passwords are stored in hashed form (irreversibly transformed) to enhance security. However, in the Pass the Hash attack, an attacker doesn't need to know the actual password; instead, they use the hashed version of the password for authentication.
+
+Here's how the Pass the Hash attack typically works:
+
+Hashed Passwords:
+
+In Windows environments, user passwords are often stored as hashed values, such as NTLM (NT LAN Manager) or, more securely, NTLMv2.
+Password Capture:
+
+An attacker gains access to the hashed password through various means, such as by extracting it from a compromised system, sniffing it during network communication, or using tools like Mimikatz.
+Replay Attack:
+
+Instead of cracking the hashed password to reveal the plaintext password, the attacker simply uses the stolen hash directly for authentication.
+Authentication:
+
+The attacker sends the stolen hash to the target system during the authentication process, tricking the system into thinking it's a legitimate user trying to log in.
+Access Granted:
+
+If successful, the attacker gains access to the target system or network resources without knowing the actual password.
+The Pass the Hash technique takes advantage of weaknesses in the traditional authentication model, where the hash itself is sufficient for authentication. This attack can be particularly effective when organizations use weak or easily crackable passwords, as the attacker can use the stolen hash without the need to break the password encryption.
+
+To defend against Pass the Hash attacks, organizations should consider implementing the following security measures:
+
+Use strong, complex passwords.
+Implement multi-factor authentication (MFA) to add an extra layer of security.
+Regularly update and patch systems to fix vulnerabilities.
+Monitor network traffic for unusual or suspicious activity.
+Educate users and administrators about security best practices.

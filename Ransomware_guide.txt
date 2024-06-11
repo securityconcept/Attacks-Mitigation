@@ -1,0 +1,35 @@
+Steps which we take if we are attacked by ransomware:
+
+Step1-Lockdown our network:
+
+Firstly we will lockdown infected computers in the network because a lot of ransomware will encrypt files of others systems in the network so isolate that system by 
+disconnect it from our network.
+
+Step2-Disable the ransomware process:
+
+Run a anti-malware software  to remove the executables files or other malicious processes.
+
+Step3-Check decryption options:
+
+Lot of ransomware has been broken by security researcher and they have made decryptors which is available publicly for free so we can use to restore those files.
+
+There is an amazing site "ID Ransomware" that allows us to identify what ransomware we have , whether it or not decryptable. Once you open this site
+you will get 2 options for uploading ransom note or sample encrypted file.
+
+Once you uploaded file, it will show you which ransomware it is and its decryptable or not. If you found that ransomware is "jigsaw" and its decryptable so you will get
+get a link where you will find a decryptor. Just click on that link and download the decryptor and run it.
+
+It will ask for the folders which are encrypted so select those folders and after sometime you will get your original content.
+
+Step4-Check if you have auto/manual backups:
+
+If ransomware is not decryptable so we have another best options i.e backups. Be careful before restoring backup files please make sure there is no active 
+malicious process or file remain in the system because if this happen your backup files also be infected.
+
+Step5-last option is to pay ransom
+
+Before going to pay ransom please check thoroughly if there is any development is going on regarding this ransomware, you will get this information from the same site i.e "ID Ransomware". If no, now you have a last option to pay ransom.
+
+=======================================================================end==============================================
+
+Reference: https://www.youtube.com/watch?v=g0yXmQx89x4

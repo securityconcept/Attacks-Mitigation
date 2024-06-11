@@ -1,0 +1,59 @@
+Process Injections:
+
+Process injection is a technique used by malware or attackers to inject code or malicious payloads into running processes on a system. 
+
+This technique allows them to execute arbitrary code within the context of a legitimate process, making it harder to detect and enabling various malicious 
+activities such as privilege escalation, data theft, or persistence.
+
+Here's an example of process injection:
+
+DLL Injection: One common form of process injection is DLL (Dynamic Link Library) injection. In this technique, the attacker injects a malicious DLL 
+into the address space of a legitimate process. The injected DLL may contain malicious code that the attacker wants to execute within the context of 
+the target process.For example, an attacker might inject a malicious DLL into the address space of a legitimate system process like "explorer.exe". 
+Once injected, the malicious DLL can execute code, manipulate system functions, or interact with other processes, all while appearing to be part of the 
+legitimate process.
+====================================================================================================
+
+Address space: 
+
+In computing, an address space refers to the range of memory addresses that a computing system or process can access. It represents the total amount of 
+memory that the system or process can utilize.
+====================================================================================================
+
+In computing, an address space refers to the range of memory addresses that a process can access. It represents the total amount of memory that the process 
+can utilize. In the context of process injection, the concept of address space is crucial.
+
+Process injection is a technique used by malware or attackers to inject code or malicious payloads into running processes on a system. 
+When a process is created, it is allocated a portion of memory called its address space. This address space contains various segments, 
+including code, data, stack, and heap.
+
+During process injection, the attacker's goal is to inject malicious code or payloads into the address space of a legitimate process. 
+By injecting code into the target process's address space, the attacker can execute arbitrary code within the context of that process, 
+making it harder to detect and potentially enabling various malicious activities.
+
+Here's how address space relates to process injection:
+
+Target Process: The target process is the legitimate process into which the attacker wants to inject code. 
+This process has its own address space, which includes memory segments allocated for code execution, data storage, stack operations, and dynamic memory allocation.
+
+Memory Allocation: When the attacker injects code into the target process, they typically allocate memory within the address space of the target process 
+to store the malicious payload. This could involve allocating memory in the target process's heap, modifying existing code sections, or creating new code 
+sections within the address space.
+
+Execution Context: Once the malicious code is injected into the target process's address space, it can be executed within the context of that process. 
+Since the injected code is running within a legitimate process, it may bypass security mechanisms that would otherwise flag or block the execution of 
+suspicious code.
+
+Stealth and Persistence: Process injection allows malware to operate stealthily and persistently on a system. 
+By injecting code into legitimate processes, malware can evade detection by antivirus software and other security controls that rely on 
+identifying malicious binaries or processes.
+
+===================================================================================================================================================
+
+
+Steps to detect process injections:
+
+Monitoring Process Creation: Keep track of processes running on the system, including their parent-child relationships and command-line parameters. 
+Anomalous processes spawned from unexpected locations or with suspicious command-line arguments can indicate potential process injection.
+
+Memory Integrity Checks: Regularly scan memory for unusual or unauthorized modifications. Techniques such as memory checksums or memory introspection can help identify unexpected changes to process memory, which may be indicative of process injection.

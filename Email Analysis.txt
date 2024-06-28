@@ -1,0 +1,364 @@
+Step by Step analysis of a Potential Malicious Email: 
+
+Step 1: Initial Email Body Review:
+
+a-Read the Email Carefully:
+
+The first step in assessing an email for potential threats is to carefully read its content. This involves understanding the context, purpose, 
+and requests made within the email.
+
+Check for any urgent or threatening language: 
+
+Phishing emails often use urgent language to prompt immediate action. Phrases like "immediate action required," 
+"your account will be locked," or "last chance to secure your account" are common. These phrases are designed to create a sense of panic, pushing the 
+recipient to act quickly without thinking critically.
+
+Threats: 
+
+Be wary of any language that implies negative consequences if no action is taken. This could include threats of legal action, fines, 
+or account suspension. The aim is to intimidate the recipient into compliance.
+
+Look for requests for sensitive information or actions:
+
+Legitimate organizations rarely ask for sensitive information such as passwords, social security numbers, or bank details via email. 
+If an email requests such information, it is a red flag.
+============================================================================================================
+
+Step2-Identify Links and Attachments:
+
+The second step involves identifying any hyperlinks or attachments within the email, which are common vectors for malware or phishing attempts.
+
+Step2- Save and Examine the email: 
+
+a-Save the email in .eml or .msg format for detailed analysis. Saving the email in these format preserves the original email structure, making it easier to analyse
+
+for phishing attempts, malicious content and other threats.
+
+For example you can upload this save email(.eml or .msg) in tools like phishtool which will give you full analysis.
+
+b-Open the email header: Use an email client or web-based service to view the email header information.
+
+Examine the email header provides insights into the technical details of the email such as the sender's IP address, the email's path
+
+through the internet and any modification made during transit. This information is crucial for identifying spoofed or malicious emails.
+
+Email client like Gmail, outlook, thunderbird. Use these email clients and open the mail and view the header information.
+
+web based services are available for examining email header such as "MXToolbox" or Google'e email header analyzer.
+
+============================================================================================================
+
+Step3-Analyze the Email Header:
+
+The first step is to obtain the complete email header, which contains vital information about the email’s journey and origins and pasted it into email header
+analyzer tool like MXTool.
+
+While doing header analysis, check below key fields:
+
+1-Received: Indicates the sequence of mail servers that handled the email.
+
+How to analyze:
+
+Trace the email’s path from bottom to top.
+
+Ensure that each server listed in the sequence is legitimate and expected.
+
+Look for unusual or unauthorized servers and check the chronological order of timestamps for consistency.
+
+Example:
+
+Received: from mail.example.com (mail.example.com [192.168.1.1])
+        by mail.recipient.com with SMTP;
+        Tue, 1 Jan 2024 12:34:56 -0500
+
+
+2-From and Reply-To: Indicates the sender’s email address and the reply-to address.
+
+How to Analyze:
+
+Ensure the From field is from a legitimate source and matches the sender’s domain.
+
+Verify that the Reply-To field, if present, matches the From address or is from an expected domain.
+
+Example:
+
+From: sender@example.com
+Reply-To: sender@example.com
+
+
+3-Message-ID: Provides a unique identifier for the email, often reflecting the sender’s domain.
+
+How to Analyze:
+
+Check if the Message-ID follows the expected format for the sender’s domain.
+
+Look for any unusual or non-standard formats that might indicate spoofing.
+
+Example:
+
+Message-ID: <unique-id@example.com>
+
+4-SPF,DKIM,DMARC: These are email authentication mechanisms that help verify the sender’s legitimacy.
+
+How to Analyze:
+
+SPF (Sender Policy Framework): Ensure the email passed the SPF check, indicating it came from an authorized server.
+
+DKIM (DomainKeys Identified Mail): Verify the DKIM signature, which ensures the email’s content has not been altered.
+
+DMARC (Domain-based Message Authentication, Reporting, and Conformance): Check the DMARC result to see if the email passed both SPF and DKIM checks.
+
+Example:
+
+Authentication-Results: dmarc=pass (p=NONE sp=NONE dis=NONE) 
+         smtp.mailfrom=example.com; 
+         dkim=pass header.i=@example.com; 
+         spf=pass (sender IP is 192.168.1.1) 
+         smtp.mailfrom=example.com;
+
+==============================================================================================================
+
+Step4-Verify Sender Authenticity : Verifying the sender’s authenticity ensures that the email is from a legitimate source and helps prevent phishing 
+and spoofing attacks.
+
+1. SPF Record Lookup : SPF (Sender Policy Framework) records specify which mail servers are permitted to send emails on behalf of a domain. 
+Verifying the SPF record helps confirm that the email was sent from an authorized server.
+
+How to Perform an SPF Record Lookup:
+
+Go to MXToolbox SPF Check:
+
+Open your web browser and navigate to the MXToolbox SPF Check.
+
+Enter the sender’s domain:
+
+In the provided text box, enter the domain of the sender (e.g., example.com).
+
+Click "SPF Record Lookup":
+
+Click the button to perform the lookup.
+
+Review the results:
+
+The tool will display the SPF record for the domain. Ensure that the sending IP address is listed as an authorized server for the domain.
+
+
+2-DKIM Record Lookup: DKIM (DomainKeys Identified Mail) uses a cryptographic signature to verify that an email’s content has not been altered during transit. 
+Checking the DKIM signature ensures the integrity and authenticity of the email.
+
+How to Perform a DKIM Record Lookup:
+
+Go to MXToolbox DKIM Check:
+
+Open your web browser and navigate to the MXToolbox DKIM Check.
+
+Enter the DKIM selector and domain:
+
+In the provided text boxes, enter the DKIM selector (found in the email header) and the sender’s domain (e.g., example.com).
+
+Click "DKIM Lookup":
+
+Click the button to perform the lookup.
+
+Review the results:
+
+The tool will display the DKIM record for the domain. Ensure that the DKIM signature in the email matches the record and validates correctly.
+
+
+3-DMARC Record Lookup: DMARC (Domain-based Message Authentication, Reporting, and Conformance) builds on SPF and DKIM by adding a layer of policy enforcement 
+and reporting. Verifying the DMARC policy helps ensure that the email complies with the domain’s specified authentication requirements.
+
+How to Perform a DMARC Record Lookup:
+
+Go to MXToolbox DMARC Check:
+
+Open your web browser and navigate to the MXToolbox DMARC Check.
+
+Enter the sender’s domain:
+
+In the provided text box, enter the domain of the sender (e.g., example.com).
+
+Click "DMARC Lookup":
+
+Click the button to perform the lookup.
+
+Review the results:
+
+The tool will display the DMARC record for the domain. Ensure that the policy is set up correctly and that the email complies with the domain’s DMARC policy.
+
+=====================================================================================================================
+
+Step5- URL Analysis(If applicable): Analyzing URLs found in emails helps detect malicious websites that could be used for phishing, malware distribution, or 
+other malicious activities.
+
+1-Copy URLs from the email that need to be analyzed by right click on the URL and select 'copy link address'.
+
+2-Analyze the URL with any URL reputation tools like Virustotal, URLScan.io, URLVoid etc. Here i am showing analysis through virustotal and URLScan.io.
+
+How to Analyze the URL with VirusTotal:
+
+In the search bar, paste the URL you copied from the email.
+
+Click the search icon or press Enter to start the scan.
+
+VirusTotal will analyze the URL and provide a report indicating whether the URL is flagged by any of the integrated security vendors. 
+Look for any indications of malicious behavior or threats.
+
+
+Analyze the URL with URLscan.io : URLscan.io is a website scanning service that provides detailed information about the behavior of a URL, 
+including any redirections, loaded resources, and potential security issues. (You can check the analysis from my youtube channhe "@securityconcepts13").
+
+
+How to Analyze the URL with URLscan.io:
+
+Go to URLscan.io:
+
+Open your web browser and navigate to URLscan.io.
+
+Paste the URL:
+
+In the search bar, paste the URL you copied from the email.
+
+Start the Scan:
+
+Click the Scan button to start the analysis.
+
+Review the Results:
+
+URLscan.io will scan the URL and provide a detailed report. Review the results for:
+
+Suspicious Activities: Look for any behaviors or patterns that suggest the URL might be used for phishing or malware distribution.
+
+Redirections: Check if the URL redirects to other domains, especially suspicious or unfamiliar ones.
+
+Loaded Resources: Examine the resources loaded by the URL, such as scripts or images, to identify any potentially malicious content.
+
+========================================================================================================================
+
+Step6-Attachment Analysis (if applicable): Analyzing attachments in emails helps detect and prevent the execution of malicious files that can compromise 
+systems and data.
+
+1-Save the attachment: The first step is to safely save the email attachment for further analysis.
+
+How to Save the Attachment:
+
+Identify the Attachment:
+
+Open the email and locate the attachment.
+
+Save the Attachment:
+
+Click on the attachment and choose the option to save it to your computer.
+
+Select a secure location on your computer, preferably one that is isolated from other files, such as a designated folder for malware analysis.
+
+2-Upload the Attachment to a Sandbox: Uploading the attachment to a sandbox environment allows for safe analysis without risking harm to your actual system.
+
+3-Virustotal Analysis: VirusTotal aggregates multiple antivirus engines to scan files for malicious content.
+
+How to Perform VirusTotal Analysis:
+
+Go to VirusTotal:
+
+Open your web browser and navigate to VirusTotal.
+
+Upload the Attachment:
+
+Click the Choose file button or drag and drop the file into the provided area.
+
+Start the Scan:
+
+Click the Scan button to begin the analysis.
+
+Review the Results:
+
+VirusTotal will display a report showing which, if any, antivirus engines have flagged the file as malicious. Review the results for any detection 
+of malicious content.
+
+4-Joe Sandbox Analysis: Joe Sandbox performs in-depth dynamic analysis to observe the behavior of the file when executed in a controlled environment.
+
+
+How to Perform Joe Sandbox Analysis:
+
+Go to Joe Sandbox:
+
+Open your web browser and navigate to Joe Sandbox.
+
+Create an Account (if necessary):
+
+If you don’t have an account, you may need to create one to use the service.
+
+Upload the Attachment:
+
+Follow the prompts to upload the file you saved from the email.
+
+Start the Analysis:
+
+Initiate a full dynamic analysis to observe the file’s behavior.
+
+Review the Results:
+
+Joe Sandbox will provide a detailed report on the file’s behavior, including any attempts to modify system settings, network communications, or 
+other potentially harmful actions.
+
+================================================================================================================
+
+Step7-Remediation and Mitigation
+
+Taking immediate actions to remediate and mitigate potential threats helps protect your organization from further compromise.
+
+Immediate Actions:
+
+Delete the Email and Any Attachments from All User Mailboxes: For this concern we can raise the concern to mail gateway to delete all the mail from "sender address"
+or subject line etc.
+
+Block the Sender's Domain if It Is Identified as Malicious: Add the sender’s domain to the block list to prevent future emails from the same domain.
+
+Block the mentioned URLs in our proxy server and also block the sender IP address on firewall.
+
+Block the malicious attached file hash on our AV console.
+
+Also run a full system scan on all those users who has recieved these phishing mails.
+
+Long Term Actions:
+
+Enhance email filtering rules to catch similar phishing attempts in the future.
+
+Educate users on identifying phishing emails and suspicious attachments.
+
+Implement multi-factor authentication for sensitive accounts.
+
+
+=================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
